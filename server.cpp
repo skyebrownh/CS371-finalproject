@@ -8,13 +8,8 @@
 #include <iostream>
 using namespace std;
 
-// function prototype
-void chat(int);
-// error display function
-void error(const char *msg) {
-  perror(msg);
-  exit(1);
-}
+// helper function prototypes
+#include "server-helpers.h"
 
 int main(int argc, char const *argv[]) {
   // check if user provided port number
@@ -78,41 +73,6 @@ int main(int argc, char const *argv[]) {
     }
   }
   return 0;
-}
-
-void chat(int sock) {
-  // client has been successfully connected - send and receive data
-  char buffer[256]; // max buffer size for read-in
-  int n;
-  while (1) {
-    bzero(buffer, 256);
-    n = 0;
-    // send message to client
-    cout << "Your message: " << endl;
-    // read input and copy into buffer
-    fgets(buffer, sizeof(buffer), stdin);
-    n = write(sock, buffer, sizeof(buffer));
-    if (n < 0) {
-        error("An error occurred trying to write to the client.\n");
-    }
-    cout << "Message sent to client" << endl;
-
-    // receive message from client
-    cout << "Waiting for client..." << endl;
-    bzero(buffer, 256);
-    // read message from client and copy into buffer
-    n = read(sock, buffer, sizeof(buffer));
-    // read will block until client writes
-    if (n < 0) {
-        error("An error occurred trying to read from the client.\n");
-    }
-    else if (strncmp("!quit", buffer, 5) == 0) {
-        cout << "Client ended session" << endl;
-        exit(0);
-    }
-    // print client message
-    printf("Client: %s\n", buffer);
-  }
 }
 
 // Sources:
