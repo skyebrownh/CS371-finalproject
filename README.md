@@ -12,6 +12,9 @@ A console-based client-server application that implements a simplified chat appl
   - Implements the client functionality of this application
   - Establishes a connection with a server on a specific host and port, then begins exchanging chat messages until *'!quit'* is sent to the server to terminate the connection
   - Prints the proper error message to the console if an error occurs *client-side* and exits the program with a non-zero exit code
+- `server-helpers.h server-helpers.cpp client-helpers.h client-helpers.cpp`:
+  - Implements helper functions used within main files
+  - Header files contain function prototypes for their respective implementations
   
 **Note:** This application allows for connections to occur over a number of networks (not just localhost). The client provides a hostname and port number at runtime so that this application is not just restricted to a single network. As long as the client hostname and port matches the server's hostname and port, the application should run correctly.
 
