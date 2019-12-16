@@ -21,8 +21,8 @@ A console-based client-server application that implements a simplified chat appl
 ***How it works:***
 1. Unzip the source code *(class submission only)* or clone this project
 2. Compile both source files
-  - `g++ -o server server.cpp`
-  - `g++ -o client client.cpp`
+  - `g++ -o server server-helpers.cpp server.cpp`
+  - `g++ -o client client-helpers.cpp client.cpp`
 3. Run each program indepently to interact with each other
   - `./server <port>`
   - `./client <hostname> <port>`
