@@ -15,12 +15,14 @@ void error(const char *msg) {
 }
 
 // server chat function
+const int MAX_BUFFER_SIZE = 256;
+
 void chat(int sock) {
     // client has been successfully connected - send and receive data
-    char buffer[256]; // max buffer size for read-in
+    char buffer[MAX_BUFFER_SIZE]; // max buffer size for read-in
     int n;
     while (1) {
-      bzero(buffer, 256);
+      bzero(buffer, MAX_BUFFER_SIZE);
       n = 0;
       // send message to client
       cout << "Your message: " << endl;
@@ -34,7 +36,7 @@ void chat(int sock) {
 
       // receive message from client
       cout << "Waiting for client..." << endl;
-      bzero(buffer, 256);
+      bzero(buffer, MAX_BUFFER_SIZE);
       // read message from client and copy into buffer
       n = read(sock, buffer, sizeof(buffer));
       // read will block until client writes
