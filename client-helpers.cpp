@@ -32,7 +32,7 @@ void chat(int sock) {
     printf("Server: %s\n", buffer);
 
     // write to server
-    cout << "Your message ('quit' to end session): ";
+    cout << "Your message ('!quit' to end session): ";
     bzero(buffer, MAX_BUFFER_SIZE);
     fgets(buffer, sizeof(buffer), stdin);
     n = write(sock, buffer, strlen(buffer));
